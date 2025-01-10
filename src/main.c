@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:51:52 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/10 20:05:40 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/10 20:07:23 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	main(int argc, char *argv[])
 
 	if ((argc != 2 || ft_strncmp(argv[1], "mandelbrot", 9)))
 	{
-		ft_putstr("Usage: ./fractol mandelbrot\n ./fractol  julia [width] [height]\n");
+		ft_putstr("Usage: ./fractol mandelbrot\n ");
+		ft_putstr("./fractol  julia [width] [height]\n");
 		return (0);
 	}
 	init_fractol(&fractol);
