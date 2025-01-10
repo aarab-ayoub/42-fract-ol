@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:01:02 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/10 19:57:59 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/10 21:11:21 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_fractol
 	double	max_real;
 	double	min_imaginary;
 	double	max_imaginary;
+
 }			t_fractol;
 
 void		init_fractol(t_fractol *fractol);
@@ -48,7 +49,7 @@ int			mandelbrot(double real, double imaginary);
 void		render_mandelbrot(t_fractol *fractol);
 void		put_pixel(t_data *img, int x, int y, int color);
 int			handle_keypress(int keycode, t_fractol *fractol);
-int			handle_mouse(int button, t_fractol *fractol);
+int			mouse_scroll(int button, int x, int y, t_fractol *fractol);
 int			get_color(int iteration);
 void		exit_wit_errors(char *message);
 void		ft_putstr(char *s);

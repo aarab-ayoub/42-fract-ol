@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:27:43 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/10 19:57:42 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/10 21:11:04 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,34 @@ int	handle_keypress(int keycode, t_fractol *fractol)
 	return (0);
 }
 
-int	handle_mouse(int button, t_fractol *fractol)
+int	mouse_scroll(int button, int x, int y, t_fractol *fractol)
 {
+	double	mouse_x;
+	double	mouse_y;
+	double	zoom;
+
+	mouse_x = fractol->min_real + (x * (fractol->max_real - fractol->min_real)
+			/ WIN_WIDTH);
+	mouse_y = fractol->min_imaginary + (y * (fractol->max_imaginary
+				- fractol->min_imaginary) / WIN_HEIGHT);
+	zoom = 0.9;
 	if (button == 4)
 	{
-		fractol->min_real *= 0.9;
-		fractol->max_real *= 0.9;
-		fractol->min_imaginary *= 0.9;
-		fractol->max_imaginary *= 0.9;
+		fractol->min_real = mouse_x + (fractol->min_real - mouse_x) * zoom;
+		fractol->max_real = mouse_x + (fractol->max_real - mouse_x) * zoom;
+		fractol->min_imaginary = mouse_y + (fractol->min_imaginary - mouse_y)
+			* zoom;
+		fractol->max_imaginary = mouse_y + (fractol->max_imaginary - mouse_y)
+			* zoom;
 	}
 	else if (button == 5)
 	{
-		fractol->min_real *= 1.1;
-		fractol->max_real *= 1.1;
-		fractol->min_imaginary *= 1.1;
-		fractol->max_imaginary *= 1.1;
+		fractol->min_real = mouse_x + (fractol->min_real - mouse_x) / zoom;
+		fractol->max_real = mouse_x + (fractol->max_real - mouse_x) / zoom;
+		fractol->min_imaginary = mouse_y + (fractol->min_imaginary - mouse_y)
+			/ zoom;
+		fractol->max_imaginary = mouse_y + (fractol->max_imaginary - mouse_y)
+			/ zoom;
 	}
 	render_mandelbrot(fractol);
 	return (0);
