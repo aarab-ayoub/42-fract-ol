@@ -1,39 +1,23 @@
-# Variables
 NAME = fractol
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-MLX = -lmlx -framework OpenGL -framework AppKit
-SRCS = srcs/main.c \
-    #    srcs/render.c \
-    #    srcs/hooks.c \
-    #    srcs/fractals.c
-OBJS = $(SRCS:.c=.o)
-INCLUDES = -Iincludes -Imlx
 
-# Rules
+SRC = src/main.c src/mandelbrot.c src/utils.c src/events.c
+OBJ = $(SRC:.c=.o)
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I includes
+MLX = -Lminilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit
+
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@echo "Compiling $(NAME)..."
-	$(CC) $(CFLAGS) $(OBJS) $(MLX) -o $(NAME)
-
-%.o: %.c
-	@echo "Compiling $<..."
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(MLX) -o $(NAME)
 
 clean:
-	@echo "Cleaning object files..."
-	rm -f $(OBJS)
+	rm -f $(OBJ)
 
 fclean: clean
-	@echo "Cleaning executable..."
 	rm -f $(NAME)
 
 re: fclean all
 
-# Bonus Rules
-bonus:
-	@echo "Compiling bonus..."
-	$(MAKE) BONUS=1
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
