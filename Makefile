@@ -5,7 +5,7 @@ OBJ = $(SRC:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I includes
-MLX = -Lminilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit
+MLX = -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 

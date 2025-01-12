@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:52:09 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/10 20:58:15 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/12 11:56:25 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	mandelbrot(double real, double imaginary)
 }
 
 // Render the Mandelbrot set
+
+// TODO
 void	render_mandelbrot(t_fractol *fractol)
 {
 	int	iter;
@@ -49,10 +51,10 @@ void	render_mandelbrot(t_fractol *fractol)
 	{
 		for (x = 0; x < WIN_WIDTH; x++)
 		{
-			real = fractol->min_real + (double)x / WIN_WIDTH
-				* (fractol->max_real - fractol->min_real);
-			imaginary = fractol->max_imaginary - (double)y / WIN_HEIGHT
-				* (fractol->max_imaginary - fractol->min_imaginary);
+			real = (x - WIN_WIDTH / 2.0) * (4.0 / (WIN_WIDTH * fractol->zoom))
+				+ fractol->offset_x;
+			imaginary = (y - WIN_HEIGHT / 2.0) * (4.0 / (WIN_HEIGHT
+						* fractol->zoom)) + fractol->offset_y;
 			iter = mandelbrot(real, imaginary);
 			put_pixel(&fractol->img, x, y, get_color(iter));
 		}

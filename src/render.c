@@ -6,11 +6,18 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:39:06 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/10 18:52:07 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/11 13:00:32 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include "fractol.h"
+
+// void	render(t_fractol *fractol)
+// {
+// 	mandelbrot(fractol);
+// 	mlx_put_image_to_window(fractol->mlx_ptr, fractol->win_ptr, fractol->img, 0,
+// 		0);
+// }
 
 // // Calculate the number of iterations for a point in the Mandelbrot set
 // int	mandelbrot(double real, double imaginary)
