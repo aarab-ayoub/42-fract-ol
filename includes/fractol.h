@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:01:02 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/12 11:56:29 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/15 13:35:57 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@ void		render_mandelbrot(t_fractol *fractol);
 void		put_pixel(t_data *img, int x, int y, int color);
 int			handle_keypress(int keycode, t_fractol *fractol);
 int			mouse_scroll(int button, int x, int y, t_fractol *fractol);
+double 		ft_atof(const char *str);
+int 		burning_ship(double real, double imaginary);
+void 		render_burning_ship(t_fractol *fractol);
+int 		julia(double real, double imaginary, double c_real, double c_imaginary);
+void 		render_julia(t_fractol *fractol, double c_real, double c_imaginary);
+
 // int			close_window(void *param);
 // int			mouse_scroll(int button, int x, int y, t_fractol *fractol);
 // int			key_press(int keycode, t_fractol *fractol);
