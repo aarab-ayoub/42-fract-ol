@@ -14,7 +14,7 @@ int burning_ship(double real, double imaginary)
         z_imaginary2 = z_imaginary * z_imaginary;
         if (z_real2 + z_imaginary2 > 4.0) // Escape condition (|z| > 2)
             break;
-        z_imaginary = fabs(2 * z_real * z_imaginary) + imaginary;
+        z_imaginary = -fabs(2 * z_real * z_imaginary) + imaginary;
         z_real = z_real2 - z_imaginary2 + real;
         iter++;
     }

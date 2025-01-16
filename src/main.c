@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:51:52 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/15 13:35:41 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/15 17:48:40 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	init_fractol(t_fractol *fractol)
 {
 	fractol->min_real = -2.0;
-	fractol->max_real = 1.0;
-	fractol->min_imaginary = -1.5;
-	fractol->max_imaginary = 1.5;
+	fractol->max_real = 2.0;
+	fractol->min_imaginary = -2;
+	fractol->max_imaginary = 2;
 	fractol->mlx_ptr = mlx_init();
 	if (!fractol->mlx_ptr)
 		exit_wit_errors("MiniLibX initialization failed");
@@ -42,7 +42,6 @@ int main(int argc, char *argv[])
 {
     t_fractol fractol;
 
-    // Check command-line arguments
     if (argc < 2 || argc > 4)
     {
         ft_putstr("Usage: ./fractol <fractal_type> [c_real] [c_imaginary]\n");
@@ -95,9 +94,9 @@ int main(int argc, char *argv[])
         return (0);
     }
 
-    // Set up event hooks
-    mlx_key_hook(fractol.win_ptr, handle_keypress, &fractol);
-    mlx_mouse_hook(fractol.win_ptr, mouse_scroll, &fractol);
+    // // Set up event hooks
+    // mlx_key_hook(fractol.win_ptr, handle_keypress, &fractol);
+    // mlx_mouse_hook(fractol.win_ptr, mouse_scroll, &fractol);
 
     // Start the MiniLibX event loop
     mlx_loop(fractol.mlx_ptr);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:39:16 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/12 11:56:33 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/15 17:46:52 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,29 @@ void	put_pixel(t_data *img, int x, int y, int color)
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
+// int	get_color(int iteration)
+// {
+//     if (iteration == MAX_ITER)
+//         return (0x000000);
 
-int	get_color(int iteration)
+//     double t = (double)iteration / MAX_ITER;
+//     int r = (int)(9 * (1 - t) * t * t * t * 255);
+//     int g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+//     int b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+
+//     return (r << 16 | g << 8 | b);
+// }
+int get_color(int iteration)
 {
-	if (iteration == MAX_ITER)
-		return (0x000000);
-	return (iteration * 0xFFFFFF / MAX_ITER);
-}
+    if (iteration == MAX_ITER)
+        return (0x000000); 
+    double t = (double)iteration / MAX_ITER;
+    int r = (int)(9 * (1 - t) * t * t * t * 255);
+    int g = (int)(15 * (1 - t) * (1 - t) * t * t * 255); 
+    int b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255); 
 
+    return (r * 65536 + g * 256 + b);
+}
 void	exit_wit_errors(char *message)
 {
 	ft_putstr(message);
