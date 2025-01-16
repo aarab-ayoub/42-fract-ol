@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:52:09 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/12 11:56:25 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/16 11:51:31 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,27 @@ int	mandelbrot(double real, double imaginary)
 // TODO
 void	render_mandelbrot(t_fractol *fractol)
 {
-	int	iter;
+	int		iter;
+	int		x;
+	int		y;
+	double	real;
+	double	imaginary;
 
-	int x, y;
-	double real, imaginary;
-	for (y = 0; y < WIN_HEIGHT; y++)
+	y = 0;
+	while (y < WIN_HEIGHT)
 	{
-		for (x = 0; x < WIN_WIDTH; x++)
+		x = 0;
+		while (x < WIN_HEIGHT)
 		{
-			real = (x - WIN_WIDTH / 2.0) * (4.0 / (WIN_WIDTH * fractol->zoom))
-				+ fractol->offset_x;
-			imaginary = (y - WIN_HEIGHT / 2.0) * (4.0 / (WIN_HEIGHT
-						* fractol->zoom)) + fractol->offset_y;
+			real = fractol->min_real + (double)x / WIN_WIDTH
+				* (fractol->max_real - fractol->min_real);
+			imaginary = fractol->max_imaginary - (double)y / WIN_HEIGHT
+				* (fractol->max_imaginary - fractol->min_imaginary);
 			iter = mandelbrot(real, imaginary);
 			put_pixel(&fractol->img, x, y, get_color(iter));
+			x++;
 		}
+		y++;
 	}
 	mlx_put_image_to_window(fractol->mlx_ptr, fractol->win_ptr,
 		fractol->img.img, 0, 0);
