@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:51:52 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/16 11:43:18 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/16 13:02:21 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,18 @@ static int	handel_argument(int argc, char *argv[], t_fractol *fractol)
 		usage_messages();
 		return (0);
 	}
+	fractol->f_type = argv[1];
 	if (ft_strncmp(argv[1], "mandelbrot", 10) == 0)
 		render_mandelbrot(fractol);
 	else if (ft_strncmp(argv[1], "julia", 5) == 0)
 	{
 		if (argc == 4)
-			render_julia(fractol, ft_atof(argv[2]), ft_atof(argv[3]));
-		else
-			render_julia(fractol, 0, 0);
+		{
+			fractol->c_real = ft_atof(argv[2]);
+			fractol->c_imaginary = ft_atof(argv[3]);
+		}
+		
+		render_julia(fractol, fractol->c_real, fractol->c_imaginary);
 	}
 	else
 	{

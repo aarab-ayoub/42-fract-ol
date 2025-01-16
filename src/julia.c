@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:48:48 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/16 11:50:19 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/16 13:02:33 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ void	render_julia(t_fractol *fractol, double c_real, double c_imaginary)
 		while (x < WIN_WIDTH)
 		{
 			real = fractol->min_real + (double)x / WIN_WIDTH
-				* (fractol->max_real - fractol->min_real);
+				* (fractol->max_real - fractol->min_real) + fractol->offset_x;
 			imaginary = fractol->max_imaginary - (double)y / WIN_HEIGHT
-				* (fractol->max_imaginary - fractol->min_imaginary);
+				* (fractol->max_imaginary - fractol->min_imaginary)
+				+ fractol->offset_y;
 			iter = julia(real, imaginary, c_real, c_imaginary);
 			put_pixel(&fractol->img, x, y, get_color(iter));
 			x++;
