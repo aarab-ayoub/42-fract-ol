@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:01:02 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/16 13:02:42 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/17 13:55:22 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ int			julia(double real, double imaginary, double c_real,
 void		render_julia(t_fractol *fractol, double c_real, double c_imaginary);
 
 // int			close_window(void *param);
-// int			mouse_scroll(int button, int x, int y, t_fractol *fractol);
-// int			key_press(int keycode, t_fractol *fractol);
 int			get_color(int iteration);
 void		exit_wit_errors(char *message);
 void		ft_putstr(char *s);
