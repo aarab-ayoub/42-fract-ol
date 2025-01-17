@@ -6,11 +6,19 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:27:43 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/16 13:04:20 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/16 13:55:56 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	render_fractal(t_fractol *fractol)
+{
+	if (ft_strncmp(fractol->f_type, "mandelbrot", 10) == 0)
+		render_mandelbrot(fractol);
+	else if (ft_strncmp(fractol->f_type, "julia", 5) == 0)
+		render_julia(fractol, fractol->c_real, fractol->c_imaginary);
+}
 
 int	handle_keypress(int keycode, t_fractol *fractol)
 {
@@ -27,39 +35,63 @@ int	handle_keypress(int keycode, t_fractol *fractol)
 		fractol->offset_x += 0.1 / fractol->zoom;
 	else if (keycode == 125)
 		fractol->offset_y += 0.1 / fractol->zoom;
-	if (ft_strncmp(fractol->f_type, "mandelbrot", 10) == 0)
-		render_mandelbrot(fractol);
-	else if (ft_strncmp(fractol->f_type, "julia", 5) == 0)
-		render_julia(fractol, fractol->c_real, fractol->c_imaginary);
+	render_fractal(fractol);
 	return (0);
 }
+
+// int	mouse_scroll(int button, int x, int y, t_fractol *fractol)
+// {
+// 	double	mouse_x;
+// 	double	mouse_y;
+
+// 	mouse_x = fractol->min_real + ((double)x / WIN_WIDTH) * (fractol->max_real
+// 			- fractol->min_real);
+// 	mouse_y = fractol->max_imaginary - (double)y / WIN_HEIGHT
+// 		* (fractol->max_imaginary - fractol->min_imaginary);
+// 	if (button == 4)
+// 		fractol->zoom *= ZOOM_FACTOR;
+// 	else if (button == 5)
+// 		fractol->zoom /= ZOOM_FACTOR;
+// 	fractol->min_real = mouse_x + (fractol->min_real - mouse_x) / fractol->zoom;
+// 	fractol->max_real = mouse_x + (fractol->max_real - mouse_x) / fractol->zoom;
+// 	fractol->min_imaginary = mouse_y + (fractol->min_imaginary - mouse_y)
+// 		/ fractol->zoom;
+// 	fractol->max_imaginary = mouse_y + (fractol->max_imaginary - mouse_y)
+// 		/ fractol->zoom;
+// 	if (ft_strncmp(fractol->f_type, "mandelbrot", 10) == 0)
+// 		render_mandelbrot(fractol);
+// 	else if (ft_strncmp(fractol->f_type, "julia", 5) == 0)
+// 		render_julia(fractol, fractol->c_real, fractol->c_imaginary);
+// 	return (0);
+// }
 
 int	mouse_scroll(int button, int x, int y, t_fractol *fractol)
 {
 	double	mouse_x;
 	double	mouse_y;
+	double	zoom_factor;
 
+	zoom_factor = 0.0;
 	mouse_x = fractol->min_real + ((double)x / WIN_WIDTH) * (fractol->max_real
 			- fractol->min_real);
-	mouse_y = fractol->max_imaginary - (double)y / WIN_HEIGHT
+	mouse_y = fractol->max_imaginary - ((double)y / WIN_HEIGHT)
 		* (fractol->max_imaginary - fractol->min_imaginary);
 	if (button == 4)
 	{
-		fractol->zoom *= ZOOM_FACTOR;
+		zoom_factor = ZOOM_FACTOR;
+		fractol->zoom *= zoom_factor;
 	}
-	if (button == 5)
+	else if (button == 5)
 	{
+		zoom_factor = 1.0 / ZOOM_FACTOR;
 		fractol->zoom /= ZOOM_FACTOR;
 	}
-	fractol->min_real = mouse_x + (fractol->min_real - mouse_x) / fractol->zoom;
-	fractol->max_real = mouse_x + (fractol->max_real - mouse_x) / fractol->zoom;
+	fractol->min_real = mouse_x + (fractol->min_real - mouse_x) * zoom_factor;
+	fractol->max_real = mouse_x + (fractol->max_real - mouse_x) * zoom_factor;
 	fractol->min_imaginary = mouse_y + (fractol->min_imaginary - mouse_y)
-		/ fractol->zoom;
+		* zoom_factor;
 	fractol->max_imaginary = mouse_y + (fractol->max_imaginary - mouse_y)
-		/ fractol->zoom;
-	if (ft_strncmp(fractol->f_type, "mandelbrot", 10) == 0)
-		render_mandelbrot(fractol);
-	else if (ft_strncmp(fractol->f_type, "julia", 5) == 0)
-		render_julia(fractol, fractol->c_real, fractol->c_imaginary);
+		* zoom_factor;
+	render_fractal(fractol);
 	return (0);
 }
