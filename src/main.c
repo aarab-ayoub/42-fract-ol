@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:51:52 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/16 13:02:21 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/17 20:05:35 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	init_fractol(t_fractol *fractol)
 {
 	fractol->min_real = -2.0;
 	fractol->max_real = 2.0;
-	fractol->min_imaginary = -2;
-	fractol->max_imaginary = 2;
+	fractol->min_im = -2;
+	fractol->max_im = 2;
 	fractol->mlx_ptr = mlx_init();
 	if (!fractol->mlx_ptr)
 		exit_wit_errors("MiniLibX initialization failed");
