@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:51:52 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/17 20:05:35 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/17 20:28:53 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	init_fractol(t_fractol *fractol)
 	fractol->max_real = 2.0;
 	fractol->min_im = -2;
 	fractol->max_im = 2;
+	fractol->max_iter = 100;
 	fractol->mlx_ptr = mlx_init();
 	if (!fractol->mlx_ptr)
 		exit_wit_errors("MiniLibX initialization failed");
@@ -59,7 +60,6 @@ static int	handel_argument(int argc, char *argv[], t_fractol *fractol)
 			fractol->c_real = ft_atof(argv[2]);
 			fractol->c_imaginary = ft_atof(argv[3]);
 		}
-		
 		render_julia(fractol, fractol->c_real, fractol->c_imaginary);
 	}
 	else
@@ -79,6 +79,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	mlx_key_hook(fractol.win_ptr, handle_keypress, &fractol);
 	mlx_mouse_hook(fractol.win_ptr, mouse_scroll, &fractol);
+	mlx_hook(fractol.win_ptr, 17, 0, close_window, &fractol);
 	mlx_loop(fractol.mlx_ptr);
 	return (0);
 }

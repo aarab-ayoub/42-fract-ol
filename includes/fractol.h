@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:01:02 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/17 20:08:20 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/17 20:30:29 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_fractol
 	double	min_im;
 	double	max_im;
 
+	int		max_iter;
 	double	zoom;
 	double	offset_x;
 	double	offset_y;
@@ -52,7 +53,7 @@ typedef struct s_fractol
 }			t_fractol;
 
 void		init_fractol(t_fractol *fractol);
-int			mandelbrot(double real, double imaginary);
+int			mandelbrot(double real, double imaginary, int max_iter);
 void		render_mandelbrot(t_fractol *fractol);
 void		put_pixel(t_data *img, int x, int y, int color);
 int			handle_keypress(int keycode, t_fractol *fractol);
@@ -64,7 +65,7 @@ int			julia(double real, double imaginary, double c_real,
 				double c_imaginary);
 void		render_julia(t_fractol *fractol, double c_real, double c_imaginary);
 
-// int			close_window(void *param);
+int			close_window(t_fractol *fractol);
 int			get_color(int iteration);
 void		exit_wit_errors(char *message);
 void		ft_putstr(char *s);
