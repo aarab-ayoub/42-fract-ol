@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:01:02 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/17 13:55:22 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/17 19:50:27 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef struct s_fractol
 	t_data	img;
 	double	min_real;
 	double	max_real;
-	double	min_imaginary;
-	double	max_imaginary;
+	double	min_im;
+	double	max_im;
 
 	double	zoom;
 	double	offset_x;
