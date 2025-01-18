@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:27:43 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/17 21:48:43 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/18 14:39:49 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,17 @@ void	render_fractal(t_fractol *fractol)
 {
 	if (ft_strncmp(fractol->f_type, "burning_ship", 12) == 0)
 		render_burning_ship(fractol);
-	
 }
 
 int	handle_keypress(int keycode, t_fractol *fractol)
 {
-	printf("%d\n",keycode);
+	printf("%d\n", keycode);
 	if (keycode == 53)
 	{
 		mlx_destroy_window(fractol->mlx_ptr, fractol->win_ptr);
 		exit(0);
 	}
-	// else if (keycode == 69)
-	// 	fractol->max_iter += 10;
-	// else if (keycode == 78)
-	// 	fractol->max_iter -= 10;
-	else if (keycode == 123)
+	if (keycode == 123)
 		fractol->offset_x -= 0.1 / fractol->zoom;
 	else if (keycode == 126)
 		fractol->offset_y -= 0.1 / fractol->zoom;
@@ -72,8 +67,8 @@ int	mouse_scroll(int button, int x, int y, t_fractol *fractol)
 	return (0);
 }
 
-int close_window(t_fractol *fractol)
+int	close_window(t_fractol *fractol)
 {
-    mlx_destroy_window(fractol->mlx_ptr, fractol->win_ptr);
-    exit(0);
+	mlx_destroy_window(fractol->mlx_ptr, fractol->win_ptr);
+	exit(0);
 }

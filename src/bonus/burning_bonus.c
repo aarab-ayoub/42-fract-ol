@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   burning_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 12:57:28 by ayaarab           #+#    #+#             */
+/*   Updated: 2025/01/18 14:49:13 by ayaarab          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 int	burning_ship(double real, double imaginary)
@@ -28,19 +40,24 @@ int	burning_ship(double real, double imaginary)
 
 void	render_burning_ship(t_fractol *fractol)
 {
-	int x = 0;
-	int y = 0;
+	int		x;
+	int		y;
+	double	real;
+	double	imaginary;
+	int		iter;
 
+	x = 0;
+	y = 0;
 	while (y < WIN_HEIGHT)
 	{
 		x = 0;
 		while (x < WIN_WIDTH)
 		{
-			double real = fractol->min_real + (double)x / WIN_WIDTH
-				* (fractol->max_real - fractol->min_real);
-			double imaginary = fractol->max_im - (double)y / WIN_HEIGHT
-				* (fractol->max_im - fractol->min_im);
-			int iter = burning_ship(real, imaginary);
+			real = fractol->min_real + (double)x / WIN_WIDTH
+				* (fractol->max_real - fractol->min_real) + fractol->offset_x;
+			imaginary = fractol->max_im - (double)y / WIN_HEIGHT
+				* (fractol->max_im - fractol->min_im) + fractol->offset_y;
+			iter = burning_ship(real, imaginary) + fractol->offset_y;
 			put_pixel(&fractol->img, x, y, get_color(iter));
 			x++;
 		}

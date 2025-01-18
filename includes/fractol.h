@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:01:02 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/17 20:30:29 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/18 18:13:41 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ double		ft_atof(const char *str);
 int			burning_ship(double real, double imaginary);
 void		render_burning_ship(t_fractol *fractol);
 int			julia(double real, double imaginary, double c_real,
-				double c_imaginary);
+				double c_imaginary, int max_iter);
 void		render_julia(t_fractol *fractol, double c_real, double c_imaginary);
 
 int			close_window(t_fractol *fractol);
-int			get_color(int iteration);
+int			get_color(int iteration, int max_iter);
 void		exit_wit_errors(char *message);
 void		ft_putstr(char *s);
 int			ft_strncmp(const char *first, const char *second, size_t length);

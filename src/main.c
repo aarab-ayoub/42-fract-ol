@@ -4,9 +4,9 @@
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                 Z                               +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:51:52 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/17 20:28:53 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/18 13:42:24 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,22 @@ void	init_fractol(t_fractol *fractol)
 static void	usage_messages(void)
 {
 	ft_putstr("Usage: ./fractol mandelbrot\n");
-	ft_putstr("./fractol julia [width] [height]\n./fractol burning_ship");
+	ft_putstr("./fractol julia [width] [height]\n");
+}
+
+static int	handle_julia_args(int argc, char *argv[], t_fractol *fractol)
+{
+	if (argc == 4)
+	{
+		fractol->c_real = ft_atof(argv[2]);
+		fractol->c_imaginary = ft_atof(argv[3]);
+		return (1);
+	}
+	else
+	{
+		usage_messages();
+		return (0);
+	}
 }
 
 static int	handel_argument(int argc, char *argv[], t_fractol *fractol)
@@ -55,11 +70,8 @@ static int	handel_argument(int argc, char *argv[], t_fractol *fractol)
 		render_mandelbrot(fractol);
 	else if (ft_strncmp(argv[1], "julia", 5) == 0)
 	{
-		if (argc == 4)
-		{
-			fractol->c_real = ft_atof(argv[2]);
-			fractol->c_imaginary = ft_atof(argv[3]);
-		}
+		if (!handle_julia_args(argc, argv, fractol))
+			return (0);
 		render_julia(fractol, fractol->c_real, fractol->c_imaginary);
 	}
 	else

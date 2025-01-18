@@ -6,13 +6,13 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:48:48 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/17 20:05:21 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/18 18:13:51 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	julia(double real, double imaginary, double c_real, double c_imaginary)
+int	julia(double real, double imaginary, double c_real, double c_imaginary, int max_iter)
 {
 	double	z_real;
 	double	z_imaginary;
@@ -25,7 +25,7 @@ int	julia(double real, double imaginary, double c_real, double c_imaginary)
 	z_real2 = 0;
 	z_imaginary2 = 0;
 	iter = 0;
-	while (iter < MAX_ITER)
+	while (iter < max_iter)
 	{
 		z_real2 = z_real * z_real;
 		z_imaginary2 = z_imaginary * z_imaginary;
@@ -55,10 +55,9 @@ void	render_julia(t_fractol *fractol, double c_real, double c_imaginary)
 			real = fractol->min_real + (double)x / WIN_WIDTH
 				* (fractol->max_real - fractol->min_real) + fractol->offset_x;
 			imaginary = fractol->max_im - (double)y / WIN_HEIGHT
-				* (fractol->max_im - fractol->min_im)
-				+ fractol->offset_y;
-			iter = julia(real, imaginary, c_real, c_imaginary);
-			put_pixel(&fractol->img, x, y, get_color(iter));
+				* (fractol->max_im - fractol->min_im) + fractol->offset_y;
+            iter = julia(real, imaginary, c_real, c_imaginary, fractol->max_iter);
+			put_pixel(&fractol->img, x, y, get_color(iter, fractol->max_iter));
 			x++;
 		}
 		y++;
