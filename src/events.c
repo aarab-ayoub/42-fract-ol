@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:27:43 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/18 17:54:16 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/18 20:51:02 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ int handle_keypress(int keycode, t_fractol *fractol)
             fractol->max_iter = 10;
     }
     else if (keycode == 123)
-        fractol->offset_x -= 0.1 / fractol->zoom;
+        fractol->offset_x -= 0.5 * fractol->zoom;
     else if (keycode == 126) 
-        fractol->offset_y -= 0.1 / fractol->zoom;
+        fractol->offset_y -= 0.5 * fractol->zoom;
     else if (keycode == 124)
-        fractol->offset_x += 0.1 / fractol->zoom;
+        fractol->offset_x += 0.5 * fractol->zoom;
     else if (keycode == 125)
-        fractol->offset_y += 0.1 / fractol->zoom;
+        fractol->offset_y += 0.5 * fractol->zoom;
     render_fractal(fractol);
     return (0);
 }

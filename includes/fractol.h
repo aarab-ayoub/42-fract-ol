@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:01:02 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/18 18:13:41 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/18 21:07:07 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void		put_pixel(t_data *img, int x, int y, int color);
 int			handle_keypress(int keycode, t_fractol *fractol);
 int			mouse_scroll(int button, int x, int y, t_fractol *fractol);
 double		ft_atof(const char *str);
-int			burning_ship(double real, double imaginary);
+int			burning_ship(double real, double imaginary, int max_iter);
 void		render_burning_ship(t_fractol *fractol);
 int			julia(double real, double imaginary, double c_real,
 				double c_imaginary, int max_iter);

@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:27:43 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/18 14:39:49 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/18 20:57:03 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,33 @@ void	render_fractal(t_fractol *fractol)
 		render_burning_ship(fractol);
 }
 
-int	handle_keypress(int keycode, t_fractol *fractol)
+int handle_keypress(int keycode, t_fractol *fractol)
 {
-	printf("%d\n", keycode);
-	if (keycode == 53)
-	{
-		mlx_destroy_window(fractol->mlx_ptr, fractol->win_ptr);
-		exit(0);
-	}
-	if (keycode == 123)
-		fractol->offset_x -= 0.1 / fractol->zoom;
-	else if (keycode == 126)
-		fractol->offset_y -= 0.1 / fractol->zoom;
-	else if (keycode == 124)
-		fractol->offset_x += 0.1 / fractol->zoom;
-	else if (keycode == 125)
-		fractol->offset_y += 0.1 / fractol->zoom;
-	render_fractal(fractol);
-	return (0);
+    printf("%d\n", keycode);
+
+    if (keycode == 53)
+    {
+        mlx_destroy_window(fractol->mlx_ptr, fractol->win_ptr);
+        exit(0);
+    }
+    else if (keycode == 69)
+        fractol->max_iter += 10;
+    else if (keycode == 78)
+    {
+        fractol->max_iter -= 10;
+        if (fractol->max_iter < 10)
+            fractol->max_iter = 10;
+    }
+    else if (keycode == 123)
+        fractol->offset_x -= 0.5 * fractol->zoom;
+    else if (keycode == 126) 
+        fractol->offset_y -= 0.5 * fractol->zoom;
+    else if (keycode == 124)
+        fractol->offset_x += 0.5 * fractol->zoom;
+    else if (keycode == 125)
+        fractol->offset_y += 0.5 * fractol->zoom;
+    render_fractal(fractol);
+    return (0);
 }
 
 int	mouse_scroll(int button, int x, int y, t_fractol *fractol)

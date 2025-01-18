@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:39:16 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/18 12:58:14 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/18 20:55:32 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,14 @@ void	put_pixel(t_data *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	get_color(int iteration)
+int	get_color(int iteration, int max_iter)
 {
 	double	t;
-	int		r;
-	int		g;
-	int		b;
 
-	if (iteration == MAX_ITER)
+	int r, g, b;
+	if (iteration == max_iter)
 		return (0x000000);
-	t = (double)iteration / MAX_ITER;
+	t = (double)iteration / max_iter;
 	r = (int)(9 * (1 - t) * t * t * t * 255);
 	g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
 	b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
