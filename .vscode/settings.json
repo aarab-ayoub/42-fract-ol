@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"algorithm": "c"
+		"algorithm": "c",
+		"fractol.h": "c",
+		"__locale": "c"
 	}
 }

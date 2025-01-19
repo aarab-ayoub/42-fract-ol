@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:51:52 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/17 21:47:58 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/19 17:20:21 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	usage_messages(void)
 
 static int	handel_argument(int argc, char *argv[], t_fractol *fractol)
 {
-	if (argc < 2)
+	if (argc != 2)
 	{
 		usage_messages();
 		return (0);

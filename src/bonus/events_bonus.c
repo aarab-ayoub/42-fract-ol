@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:27:43 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/19 14:57:38 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/19 17:20:52 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	render_fractal(t_fractol *fractol)
 
 int	handle_keypress(int keycode, t_fractol *fractol)
 {
-	printf("%d\n", keycode);
 	if (keycode == 53)
 	{
 		mlx_destroy_window(fractol->mlx_ptr, fractol->win_ptr);

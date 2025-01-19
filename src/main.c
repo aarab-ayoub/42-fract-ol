@@ -4,7 +4,7 @@
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
-/*                 Z                               +#+#+#+#+#+  
+/*                 Z                               +#+#+#+#+#+
 	+#+           */
 /*   Created: 2025/01/10 15:51:52 by ayaarab           #+#    #+#             */
 /*   Updated: 2025/01/18 13:42:24 by ayaarab          ###   ########.fr       */
@@ -50,6 +50,12 @@ static int	handle_julia_args(int argc, char *argv[], t_fractol *fractol)
 	{
 		fractol->c_real = ft_atof(argv[2]);
 		fractol->c_imaginary = ft_atof(argv[3]);
+		if (fractol->c_imaginary < -2 || fractol->c_imaginary > 2
+			|| fractol->c_real < -2 || fractol->c_real > 2)
+		{
+			ft_putstr("Invalid arguments\n");
+			return (0);
+		}
 		return (1);
 	}
 	else
