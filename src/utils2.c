@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:54:21 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/18 17:15:04 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/19 16:30:02 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,22 @@ double	ft_atof(const char *str)
 	double	result;
 	double	fraction;
 	int		sign;
+	int		i;
 
 	result = 0.0;
 	fraction = 1.0;
 	sign = 1;
+	i = 0;
 	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
 		str++;
 	if (*str == '-' || *str == '+')
-		sign = (*str++ == '-') ? -1 : 1;
+	{
+		if (*str == '-')
+			sign = -1;
+		else
+			sign = 1;
+		str++;
+	}
 	while (*str >= '0' && *str <= '9')
 		result = result * 10.0 + (*str++ - '0');
 	if (*str == '.')

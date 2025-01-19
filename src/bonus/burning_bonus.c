@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 12:57:28 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/18 21:07:30 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/19 14:57:16 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	render_burning_ship(t_fractol *fractol)
 {
 	int		x;
 	int		y;
-	double	real;
-	double	imaginary;
+	double	rl;
+	double	im;
 	int		iter;
 
 	x = 0;
@@ -53,12 +53,11 @@ void	render_burning_ship(t_fractol *fractol)
 		x = 0;
 		while (x < WIN_WIDTH)
 		{
-			real = fractol->min_real + (double)x / WIN_WIDTH
-				* (fractol->max_real - fractol->min_real) + fractol->offset_x;
-			imaginary = fractol->max_im - (double)y / WIN_HEIGHT
-				* (fractol->max_im - fractol->min_im) + fractol->offset_y;
-			iter = burning_ship(real, imaginary, fractol->max_iter)
-				+ fractol->offset_y;
+			rl = fractol->min_real + (double)x / WIN_WIDTH * (fractol->max_real
+					- fractol->min_real) + fractol->offset_x;
+			im = fractol->max_im - (double)y / WIN_HEIGHT * (fractol->max_im
+					- fractol->min_im) + fractol->offset_y;
+			iter = burning_ship(rl, im, fractol->max_iter) + fractol->offset_y;
 			put_pixel(&fractol->img, x, y, get_color(iter, fractol->max_iter));
 			x++;
 		}

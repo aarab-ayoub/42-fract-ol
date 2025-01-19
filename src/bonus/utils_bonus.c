@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:39:16 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/18 20:55:32 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/19 14:55:46 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ void	put_pixel(t_data *img, int x, int y, int color)
 int	get_color(int iteration, int max_iter)
 {
 	double	t;
+	int		r;
+	int		g;
+	int		b;
 
-	int r, g, b;
 	if (iteration == max_iter)
 		return (0x000000);
 	t = (double)iteration / max_iter;

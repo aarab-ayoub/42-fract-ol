@@ -4,7 +4,8 @@
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
-/*                 Z                               +#+#+#+#+#+   +#+           */
+/*                 Z                               +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2025/01/10 15:51:52 by ayaarab           #+#    #+#             */
 /*   Updated: 2025/01/18 13:42:24 by ayaarab          ###   ########.fr       */
 /*                                                                            */
@@ -72,7 +73,7 @@ static int	handel_argument(int argc, char *argv[], t_fractol *fractol)
 	{
 		if (!handle_julia_args(argc, argv, fractol))
 			return (0);
-		render_julia(fractol, fractol->c_real, fractol->c_imaginary);
+		render_julia(fractol);
 	}
 	else
 	{

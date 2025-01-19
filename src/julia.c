@@ -6,39 +6,37 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:48:48 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/18 18:13:51 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/19 16:39:27 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	julia(double real, double imaginary, double c_real, double c_imaginary, int max_iter)
+int	julia(t_fractol *fractol, double real, double imaginary)
 {
 	double	z_real;
 	double	z_imaginary;
+	int		iter;
 	double	z_real2;
 	double	z_imaginary2;
-	int		iter;
 
 	z_real = real;
 	z_imaginary = imaginary;
-	z_real2 = 0;
-	z_imaginary2 = 0;
 	iter = 0;
-	while (iter < max_iter)
+	while (iter < fractol->max_iter)
 	{
 		z_real2 = z_real * z_real;
 		z_imaginary2 = z_imaginary * z_imaginary;
 		if (z_real2 + z_imaginary2 > 4.0)
 			break ;
-		z_imaginary = 2 * z_real * z_imaginary + c_imaginary;
-		z_real = z_real2 - z_imaginary2 + c_real;
+		z_imaginary = 2 * z_real * z_imaginary + fractol->c_imaginary;
+		z_real = z_real2 - z_imaginary2 + fractol->c_real;
 		iter++;
 	}
 	return (iter);
 }
 
-void	render_julia(t_fractol *fractol, double c_real, double c_imaginary)
+void	render_julia(t_fractol *fractol)
 {
 	int		x;
 	int		y;
@@ -56,7 +54,7 @@ void	render_julia(t_fractol *fractol, double c_real, double c_imaginary)
 				* (fractol->max_real - fractol->min_real) + fractol->offset_x;
 			imaginary = fractol->max_im - (double)y / WIN_HEIGHT
 				* (fractol->max_im - fractol->min_im) + fractol->offset_y;
-            iter = julia(real, imaginary, c_real, c_imaginary, fractol->max_iter);
+			iter = julia(fractol, real, imaginary);
 			put_pixel(&fractol->img, x, y, get_color(iter, fractol->max_iter));
 			x++;
 		}
