@@ -1,4 +1,5 @@
 NAME = fractol
+NAME_BONUS = fractol_bonus
 
 SRC = src/main.c src/mandelbrot.c src/utils.c src/utils2.c src/events.c src/julia.c
 SRCB = src/bonus/main_bonus.c src/bonus/burning_bonus.c src/bonus/utils_bonus.c src/bonus/events_bonus.c
@@ -19,7 +20,7 @@ RESET = \033[0m
 
 # ASCII art for "FRACT'OL"
 FRACTOL_ART = "\n\
-$(RED)$(BOLD)███████╗██████╗  █████╗  ██████╗████████╗  ██   ██████╗ ██╗     $(RESET)\n\
+$(RED)$(BOLD)███████╗██████╗  █████╗  ██████╗████████╗  ██   ██████╠ ██╗     $(RESET)\n\
 $(RED)$(BOLD)██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝  █   ██╔═══██╗██║     $(RESET)\n\
 $(RED)$(BOLD)█████╗  ██████╔╝███████║██║        ██║         ██║   ██║██║     $(RESET)\n\
 $(RED)$(BOLD)██╔══╝  ██╔══██╗██╔══██║██║        ██║         ██║   ██║██║     $(RESET)\n\
@@ -29,6 +30,7 @@ $(RED)$(BOLD)╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═══
 
 # Success message
 SUCCESS_MSG = "$(GREEN)$(BOLD)✔ Successfully compiled $(NAME)!$(RESET)"
+SUCCESS_MSG_BONUS = "$(GREEN)$(BOLD)✔ Successfully compiled $(NAME_BONUS)!$(RESET)"
 ayaarab = "$(RED)                                 created by : ayaarab √ [ESBG 💜]$(RESET)"
 
 all: $(NAME)
@@ -39,22 +41,25 @@ $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(MLX) -o $(NAME)
 	@echo $(SUCCESS_MSG)
 
-%.o:%.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+bonus: $(NAME_BONUS)
 
-bonus: $(OBJB)
+$(NAME_BONUS): $(OBJB)
 	@echo $(FRACTOL_ART)
-	@$(CC) $(CFLAGS) $(SRCB) $(MLX) -o $(NAME)
-	@echo $(SUCCESS_MSG)
+	@echo $(ayaarab)
+	@$(CC) $(CFLAGS) $(OBJB) $(MLX) -o $(NAME_BONUS)
+	@echo $(SUCCESS_MSG_BONUS)
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@rm -f $(OBJ) $(OBJB)
 	@echo "$(GREEN)$(BOLD)✔ Cleaned object files!$(RESET)"
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo "$(GREEN)$(BOLD)✔ Removed $(NAME)!$(RESET)"
+	@rm -f $(NAME) $(NAME_BONUS)
+	@echo "$(GREEN)$(BOLD)✔ Removed $(NAME) and $(NAME_BONUS)!$(RESET)"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re
