@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 12:57:28 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/19 14:57:16 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/20 12:26:30 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	burning_ship(double real, double imaginary, int max_iter)
 		if (z_real2 + z_imaginary2 > 4.0)
 			break ;
 		z_imaginary = -fabs(2 * z_real * z_imaginary) + imaginary;
-		z_real = z_real2 - z_imaginary2 + real;
+		z_real = fabs(z_real2 - z_imaginary2 + real);
 		iter++;
 	}
 	return (iter);
@@ -57,7 +57,7 @@ void	render_burning_ship(t_fractol *fractol)
 					- fractol->min_real) + fractol->offset_x;
 			im = fractol->max_im - (double)y / WIN_HEIGHT * (fractol->max_im
 					- fractol->min_im) + fractol->offset_y;
-			iter = burning_ship(rl, im, fractol->max_iter) + fractol->offset_y;
+			iter = burning_ship(rl, im, fractol->max_iter);
 			put_pixel(&fractol->img, x, y, get_color(iter, fractol->max_iter));
 			x++;
 		}

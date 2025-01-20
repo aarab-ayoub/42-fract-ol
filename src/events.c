@@ -6,7 +6,7 @@
 /*   By: ayaarab <ayaarab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:27:43 by ayaarab           #+#    #+#             */
-/*   Updated: 2025/01/19 17:19:17 by ayaarab          ###   ########.fr       */
+/*   Updated: 2025/01/20 12:22:58 by ayaarab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int	handle_keypress(int keycode, t_fractol *fractol)
 		if (fractol->max_iter < 10)
 			fractol->max_iter = 10;
 	}
-	else if (keycode == 123)
+	else if (keycode == 124)
 		fractol->offset_x -= 0.5 * fractol->zoom;
 	else if (keycode == 126)
 		fractol->offset_y -= 0.5 * fractol->zoom;
-	else if (keycode == 124)
+	else if (keycode == 123)
 		fractol->offset_x += 0.5 * fractol->zoom;
 	else if (keycode == 125)
 		fractol->offset_y += 0.5 * fractol->zoom;
