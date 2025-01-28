@@ -7,8 +7,7 @@
 Fract'ol is a mesmerizing 42 project that explores the beauty of fractals. This program generates stunning visualizations of the **Mandelbrot Set**, **Julia Set**, and **Burning Ship Fractal**, allowing you to dive into the infinite complexity of these mathematical wonders.
 
 
-![Fract'ol Mandelbrot Set](https://via.placeholder.com/800x400.png?text=Mandelbrot+Set+Image) <!-- Replace with your Mandelbrot image -->
-
+![Fract'ol Mandelbrot Set](images/mandelbrot.png)
 ---
 ## Table of Contents
 
@@ -77,7 +76,7 @@ Once the program is running, you can interact with the fractals using the follow
 
 ### Mandelbrot Set
 
-![Mandelbrot Set](https://via.placeholder.com/400x400.png?text=Mandelbrot+Set) <!-- Replace with Mandelbrot image -->
+![Mandelbrot Set](images/mandelbrot.png)
 
 The **Mandelbrot Set** is one of the most famous fractals. It is defined by the iterative formula:
 
@@ -91,7 +90,11 @@ where \( z \) and \( c \) are complex numbers.
 
 ### Julia Set
 
-![Julia Set](https://via.placeholder.com/400x400.png?text=Julia+Set) <!-- Replace with Julia Set image -->
+![Julia Set](images/julia.png)
+![Julia 1 Set](images/julia1.png)
+![Julia 2 Set](images/julia2.png)
+![Julia 3 Set](images/julia3.png)
+![Julia 4 Set](images/julia4.png)
 
 The **Julia Set** is closely related to the Mandelbrot Set. It uses the same formula but allows you to customize the value of \( c \). Each choice of \( c \) produces a unique fractal.
 
@@ -99,7 +102,8 @@ The **Julia Set** is closely related to the Mandelbrot Set. It uses the same for
 
 ### Burning Ship Fractal
 
-![Burning Ship Fractal](https://via.placeholder.com/400x400.png?text=Burning+Ship+Fractal) <!-- Replace with Burning Ship image -->
+![Burning 1 Ship Fractal](images/burning_ship1.png)
+![Burning Ship Fractal](images/burning_ship.png)
 
 The **Burning Ship Fractal** is a variation of the Mandelbrot Set. It uses the formula:
 
