@@ -1,5 +1,4 @@
 # Fract'ol
-
 <p align="center">
   <img src="https://github.com/mcombeau/mcombeau/blob/main/42_badges/fract-ole.png" alt="Fract'ol 42 project badge"/>
 </p>
