@@ -93,9 +93,9 @@ int	main(int argc, char *argv[])
 {
 	t_fractol	fractol;
 
+	init_fractol(&fractol);
 	if (!handel_argument(argc, argv, &fractol))
 		return (0);
-	init_fractol(&fractol);
 	mlx_key_hook(fractol.win_ptr, handle_keypress, &fractol);
 	mlx_mouse_hook(fractol.win_ptr, mouse_scroll, &fractol);
 	mlx_hook(fractol.win_ptr, 17, 0, close_window, &fractol);
